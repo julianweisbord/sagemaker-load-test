@@ -44,7 +44,6 @@ class SagemakerLocust(Locust):
             sagemaker_session = sm_session,
             endpoint = self.endpoint,
             serializer = csv_serializer)
-        print('session is done!')
 
        
         
@@ -61,6 +60,6 @@ class APIUser(SagemakerLocust):
     class task_set(TaskSet):
         @task
         def call(self):
-            data = np.array([ 4.5,  2.3,  1.3,  0.3])
+            data = np.random.rand(4)*10
             self.client.predictEx(data)
         
